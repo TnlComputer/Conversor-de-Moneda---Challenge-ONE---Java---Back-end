@@ -16,12 +16,12 @@ public class ConversorMonedas {
             System.out.println("==============================");
             System.out.println("      CONVERSOR DE MONEDAS     ");
             System.out.println("==============================");
-            System.out.println("1. Dólar (USD) → Peso Argentino (ARS)");
-            System.out.println("2. Peso Argentino (ARS) → Dólar (USD)");
+            System.out.println("1. Dólar (USD) =>> Peso Argentino (ARS)");
+            System.out.println("2. Peso Argentino (ARS) =>> Dólar (USD)");
             System.out.println("3. Dólar (USD) =>> Real (BRL)");
-            System.out.println("4. Real (BRL) → Dólar (USD)");
-            System.out.println("5. Dólar (USD) → Peso Colombiano (COP)");
-            System.out.println("6. Peso Colombiano (COP) → Dólar (USD)");
+            System.out.println("4. Real (BRL) =>> Dólar (USD)");
+            System.out.println("5. Dólar (USD) =>> Peso Colombiano (COP)");
+            System.out.println("6. Peso Colombiano (COP) =>> Dólar (USD)");
             System.out.println("7. Salir");
             System.out.print("Elija una opción: ");
             opcion = scanner.nextInt();
