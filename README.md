@@ -129,3 +129,5 @@ Este proyecto se distribuye bajo la licencia **MIT**, lo que permite su uso, mod
 ![Java Badge](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-active-success)
+
+<img width="500" height="500" alt="Badge-Conversor" src="https://github.com/user-attachments/assets/7ff2ec22-5cb2-477b-bd53-0bd9f77fad2b" />
