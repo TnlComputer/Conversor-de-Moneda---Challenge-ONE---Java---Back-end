@@ -130,4 +130,4 @@ Este proyecto se distribuye bajo la licencia **MIT**, lo que permite su uso, mod
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-active-success)
 
-<img width="500" height="500" alt="Badge-Conversor" src="https://github.com/user-attachments/assets/7ff2ec22-5cb2-477b-bd53-0bd9f77fad2b" />
+<img width="250" height="250" alt="Badge-Conversor" src="https://github.com/TnlComputer/Conversor-de-Moneda---Challenge-ONE---Java---Back-end/blob/main/Badge-Conversor.png" />
