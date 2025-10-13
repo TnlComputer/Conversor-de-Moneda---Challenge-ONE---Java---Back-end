@@ -1,30 +1,42 @@
 # 💱 Conversor de Monedas en Java
 
-Un **conversor de monedas interactivo en consola**, desarrollado en **Java**, que utiliza la API pública de [ExchangeRate-API](https://www.exchangerate-api.com/) para obtener tasas de cambio actualizadas entre distintas divisas.
+Este proyecto es un **conversor de monedas interactivo** que utiliza la API pública de [ExchangeRate-API](https://www.exchangerate-api.com/) para obtener las tasas de cambio actualizadas en tiempo real.
 
----
+## 🚀 Funcionalidades
 
-## 🚀 Características
+- Menú interactivo con opciones de conversión entre diferentes monedas.
+- Solicita al usuario el monto a convertir.
+- Conexión a la API mediante `HttpClient` de Java.
+- Manejo de errores y validaciones de entrada.
+- Visualización de la tasa actual del cambio.
 
-- Conversión **en tiempo real** entre más de 160 monedas.
-- Menú interactivo con opciones para:
-  - Convertir de una moneda a otra.
-  - Repetir conversiones sin reiniciar el programa.
-  - Salir de la aplicación fácilmente.
-- Manejo de errores comunes (códigos de moneda inválidos, fallos de red, etc.).
-- Compatible con **Java 11+** (usa `HttpClient` nativo).
+## 🧮 Menú de opciones
 
----
+```
+1. Dólar (USD) → Peso Argentino (ARS)
+2. Peso Argentino (ARS) → Dólar (USD)
+3. Dólar (USD) → Real (BRL)
+4. Real (BRL) → Dólar (USD)
+5. Dólar (USD) → Peso Colombiano (COP)
+6. Peso Colombiano (COP) → Dólar (USD)
+7. Salir
+```
 
-## 🛠️ Tecnologías utilizadas
+## 🧠 Ejemplo de uso
 
-- **Java 11 o superior**
-- **Gson** → para procesar la respuesta JSON.
-- **ExchangeRate-API** → fuente de datos para tasas de cambio.
+```
+Ingrese el monto en USD: 100
+100.00 USD = 98000.00 ARS
+Tasa actual: 1 USD = 980.0000 ARS
+```
 
----
+## ⚙️ Tecnologías utilizadas
 
-## 📦 Instalación
+- **Java 17+**
+- **Gson** (para parsear JSON)
+- **HttpClient** (para llamadas a la API)
+
+## 📦 Instalación y ejecución
 
 1. **Clona este repositorio:**
    ```bash
@@ -47,7 +59,7 @@ Un **conversor de monedas interactivo en consola**, desarrollado en **Java**, qu
    private static final String API_KEY = "YOUR-API-KEY";
    ```
 
-  Nota: El Código va entre comillas
+   Nota: El Código va entre comillas
 ---
 
 ## ▶️ Ejecución
@@ -64,22 +76,6 @@ java ConversorMonedas
 ## 💡 Ejemplo de uso
 
 ```
-==============================
-     CONVERSOR DE MONEDAS     
-==============================
-1. Convertir moneda
-2. Salir
-Seleccione una opción: 1
-
-Ingrese la moneda base (por ejemplo USD, EUR, ARS): USD
-Ingrese la moneda destino (por ejemplo EUR, BRL, CLP): ARS
-Ingrese el monto a convertir: 10
-
-10.00 USD = 8955.00 ARS
-Tasa: 1 USD = 895.5000 ARS
-```
-
----
 
 ## 🧩 Estructura del proyecto
 
@@ -122,3 +118,14 @@ Analista Programador – Especialista en desarrollo backend y herramientas de Bu
 ## 📄 Licencia
 
 Este proyecto se distribuye bajo la licencia **MIT**, lo que permite su uso, modificación y distribución libremente.
+
+## 📅 Fecha de creación
+13/10/2025
+
+---
+
+### 🏷️ Insignia del Proyecto
+
+![Java Badge](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-active-success)

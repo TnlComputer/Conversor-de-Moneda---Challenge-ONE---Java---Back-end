@@ -1,91 +1,73 @@
+import java.net.http.*;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class ConversorMonedas {
-
-    private static final String API_KEY = "3eef75be14b295a222cf66be";
-    private static final String BASE_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
+    private static final String API_KEY = "3eef75be14b295a222cf66be"; // reemplazar con tu clave real
+    private static final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        boolean continuar = true;
+        Scanner scanner = new Scanner(System.in);
+        int opcion = 0;
 
-        while (continuar) {
-            System.out.println("\n==============================");
-            System.out.println("     CONVERSOR DE MONEDAS     ");
+        while (opcion != 7) {
             System.out.println("==============================");
-            System.out.println("1. Convertir moneda");
-            System.out.println("2. Salir");
-            System.out.print("Seleccione una opción: ");
-
-            int opcion = sc.nextInt();
+            System.out.println("      CONVERSOR DE MONEDAS     ");
+            System.out.println("==============================");
+            System.out.println("1. Dólar (USD) → Peso Argentino (ARS)");
+            System.out.println("2. Peso Argentino (ARS) → Dólar (USD)");
+            System.out.println("3. Dólar (USD) =>> Real (BRL)");
+            System.out.println("4. Real (BRL) → Dólar (USD)");
+            System.out.println("5. Dólar (USD) → Peso Colombiano (COP)");
+            System.out.println("6. Peso Colombiano (COP) → Dólar (USD)");
+            System.out.println("7. Salir");
+            System.out.print("Elija una opción: ");
+            opcion = scanner.nextInt();
 
             switch (opcion) {
-                case 1:
-                    convertirMoneda(sc);
-                    break;
-                case 2:
-                    continuar = false;
-                    System.out.println("Saliendo del conversor... ¡Hasta luego!");
-                    break;
-                default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
+                case 1 -> convertir("USD", "ARS", scanner);
+                case 2 -> convertir("ARS", "USD", scanner);
+                case 3 -> convertir("USD", "BRL", scanner);
+                case 4 -> convertir("BRL", "USD", scanner);
+                case 5 -> convertir("USD", "COP", scanner);
+                case 6 -> convertir("COP", "USD", scanner);
+                case 7 -> System.out.println("¡Gracias por usar el conversor!");
+                default -> System.out.println("Opción inválida. Intente nuevamente.");
+            }
+
+            if (opcion != 7) {
+                System.out.println("\nPresione ENTER para continuar...");
+                scanner.nextLine();
+                scanner.nextLine();
             }
         }
+
+        scanner.close();
     }
 
-    private static void convertirMoneda(Scanner sc) {
+    private static void convertir(String base, String destino, Scanner scanner) {
         try {
-            System.out.print("\nIngrese la moneda base (por ejemplo USD, EUR, ARS): ");
-            String monedaBase = sc.next().toUpperCase();
+            System.out.print("Ingrese el monto en " + base + ": ");
+            double monto = scanner.nextDouble();
 
-            System.out.print("Ingrese la moneda destino (por ejemplo EUR, BRL, CLP): ");
-            String monedaDestino = sc.next().toUpperCase();
-
-            System.out.print("Ingrese el monto a convertir: ");
-            double monto = sc.nextDouble();
-
-            // Construir URL dinámica según moneda base
-            String url = BASE_URL + monedaBase;
-
-            // Crear cliente HTTP
+            String direccion = API_URL + base;
             HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .build();
-
-            // Enviar request y obtener respuesta
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(direccion)).build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            // Parsear JSON
-            JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+            JsonObject jsonResponse = JsonParser.parseString(response.body()).getAsJsonObject();
+            JsonObject conversionRates = jsonResponse.getAsJsonObject("conversion_rates");
 
-            // Validar si hubo error (por ejemplo, código inválido)
-            if (!json.get("result").getAsString().equals("success")) {
-                System.out.println("Error: código de moneda base no válido.");
-                return;
-            }
+            double tasa = conversionRates.get(destino).getAsDouble();
+            double resultado = monto * tasa;
 
-            JsonObject rates = json.getAsJsonObject("conversion_rates");
-
-            if (!rates.has(monedaDestino)) {
-                System.out.println("Error: moneda destino no válida.");
-                return;
-            }
-
-            double tasa = rates.get(monedaDestino).getAsDouble();
-            double convertido = monto * tasa;
-
-            System.out.printf("\n%.2f %s = %.2f %s%n", monto, monedaBase, convertido, monedaDestino);
-            System.out.printf("Tasa: 1 %s = %.4f %s%n", monedaBase, tasa, monedaDestino);
+            System.out.printf("%.2f %s = %.2f %s\n", monto, base, resultado, destino);
+            System.out.printf("Tasa actual: 1 %s = %.4f %s\n", base, tasa, destino);
 
         } catch (Exception e) {
-            System.out.println("Ocurrió un error al convertir: " + e.getMessage());
+            System.out.println("Error al realizar la conversión: " + e.getMessage());
         }
     }
 }
