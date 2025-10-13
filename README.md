@@ -13,12 +13,12 @@ Este proyecto es un **conversor de monedas interactivo** que utiliza la API púb
 ## 🧮 Menú de opciones
 
 ```
-1. Dólar (USD) → Peso Argentino (ARS)
-2. Peso Argentino (ARS) → Dólar (USD)
-3. Dólar (USD) → Real (BRL)
-4. Real (BRL) → Dólar (USD)
-5. Dólar (USD) → Peso Colombiano (COP)
-6. Peso Colombiano (COP) → Dólar (USD)
+1. Dólar (USD) =>> Peso Argentino (ARS)
+2. Peso Argentino (ARS) =>> Dólar (USD)
+3. Dólar (USD) =>> Real (BRL)
+4. Real (BRL) =>> Dólar (USD)
+5. Dólar (USD) =>> Peso Colombiano (COP)
+6. Peso Colombiano (COP) =>> Dólar (USD)
 7. Salir
 ```
 
